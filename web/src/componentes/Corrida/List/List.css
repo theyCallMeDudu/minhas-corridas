@@ -1,0 +1,21 @@
+.corrida-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.corrida-list .corrida-card {
+    width: 26%;
+    margin: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .corrida-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .corrida-list .corrida-card {
+        margin: 0 0 10px 0;
+        width: 90%;
+    }
+}
