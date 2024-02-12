@@ -4,8 +4,8 @@
     justify-content: space-around;
 }
 .corrida-list .corrida-card {
-    width: 26%;
-    margin: 10px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 767px) {

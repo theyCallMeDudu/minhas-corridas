@@ -1,10 +1,18 @@
-import React from 'react';
 import CorridaCard from '../Card/Card';
 import './List.css';
+import useApi from "../../utils/useApi";
 
-const CorridaList = ({ loading, corridas, error }) => {
+const CorridaList = ({ loading, corridas, error, refetch }) => {
+    const [deleteCorrida, deleteCorridaInfo] = useApi({
+        method: 'DELETE',
+    });
+
     if (error) {
         return <div>Ops, ocorreu um erro!</div>
+    }
+
+    if (corridas === null || deleteCorridaInfo.loading) {
+        return <div>Carregando...</div>
     }
     
     if (loading || corridas === null) {
@@ -18,7 +26,15 @@ const CorridaList = ({ loading, corridas, error }) => {
     return (
         <div className='corrida-list'>
             {corridas.map((corrida) => (
-                <CorridaCard corrida={corrida} />
+                <CorridaCard 
+                    corrida={corrida} 
+                    onClickDelete={async () => {
+                        await deleteCorrida({
+                            url: `/corridas/${corrida.id}`
+                        });
+                        refetch();
+                    }} 
+                />
             ))}
         </div>
     );

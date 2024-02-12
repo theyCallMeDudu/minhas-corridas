@@ -1,3 +1,9 @@
+.corrida-form__title {
+    text-transform: uppercase;
+    color: #888;
+    width: 100%;
+}
+
 .corrida-form__group {
     display: flex;
     flex-direction: column;
@@ -22,4 +28,27 @@
 .corrida-form__footer {
     display: flex;
     justify-content: space-between;
+}
+
+.corrida-form__link {
+    border: 1px solid #3498DB;
+    border-radius: 4px;
+    color: #3498DB;
+    text-decoration: none;
+    padding: 8px 10px;
+    white-space: nowrap;
+    height: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.corrida-form__button {
+    border: 1px solid #3498DB;
+    border-radius: 4px;
+    color: #3498DB;
+    text-decoration: none;
+    padding: 8px 10px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
 }

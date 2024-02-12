@@ -5,9 +5,16 @@
     margin-bottom: 20px;
 }
 
+.corrida-search__nav {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
 .corrida-search__header h1 {
     text-transform: uppercase;
     color: #888;
+    width: 100%;
 }
 
 .corrida-search__header img {
@@ -24,6 +31,18 @@
     margin-bottom: 20px;
     padding: 0 10px;
     font-size: 16px;
+}
+
+.corrida-search__link {
+    border: 1px solid #3498DB;
+    border-radius: 4px;
+    color: #3498DB;
+    text-decoration: none;
+    padding: 8px 10px;
+    white-space: nowrap;
+    height: 10px;
+    display: flex;
+    align-items: center;
 }
 
 @media screen and (max-width: 768px) {
