@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import './Show.css';
 import { Link } from "react-router-dom";
 import { format } from 'date-fns';
+import CorridaModal from "../Modal/Modal";
 
 const initialValueCorrida = {
     title: '',
@@ -24,6 +25,8 @@ const formatDate = (dateString) => {
 const CorridaShow = ({ id }) => {
     const [valuesCorrida, setValuesCorrida] = useState(id ? null : initialValueCorrida);
     // const [valuesFotos, setValuesFotos] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const [loadCorrida, loadCorridaInfo] = useApi({
       url: `/corridas/${id}`,
@@ -33,6 +36,16 @@ const CorridaShow = ({ id }) => {
         console.log(valuesCorrida);
       }
     });
+
+    const openModal = (imageSrc) => {
+        setSelectedImage(imageSrc);
+        setModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setSelectedImage(null);
+        setModalOpen(false);
+    };
   
     // const [loadFotos, loadFotosInfo] = useApi({
     //   url: '/fotos',
@@ -129,6 +142,7 @@ const CorridaShow = ({ id }) => {
                                             src={valuesCorrida.foto1}
                                             alt={`Foto da corrida ${valuesCorrida.title}`}
                                             className='corrida-show__slide_image' 
+                                            onClick={() => openModal(valuesCorrida.foto1)}
                                         />
                                     </div>
                                 }
@@ -139,6 +153,7 @@ const CorridaShow = ({ id }) => {
                                             src={valuesCorrida.foto2}
                                             alt={`Foto da corrida ${valuesCorrida.title}`}
                                             className='corrida-show__slide_image' 
+                                            onClick={() => openModal(valuesCorrida.foto2)}
                                         />
                                     </div>
                                 }
@@ -149,6 +164,7 @@ const CorridaShow = ({ id }) => {
                                             src={valuesCorrida.foto3}
                                             alt={`Foto da corrida ${valuesCorrida.title}`}
                                             className='corrida-show__slide_image' 
+                                            onClick={() => openModal(valuesCorrida.foto3)}
                                         />
                                     </div>
                                 }
@@ -160,6 +176,16 @@ const CorridaShow = ({ id }) => {
                     </div>
                 )
             }
+            <CorridaModal isOpen={modalOpen} onClickClose={() => setModalOpen(false)}>
+                {selectedImage && (
+                    <img 
+                        src={selectedImage}
+                        alt="Imagem em tamanho real"
+                        style={{ maxWidth: '100%', maxHeight: '100%' }}
+                        onClickClose={() => setModalOpen(true)}
+                    />
+                )}
+            </CorridaModal>
         </div>
     );
 }

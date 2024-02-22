@@ -56,8 +56,10 @@
 
 .corrida-show__slide_image {
     width: 100%;
-    height: min-content;
+    height: auto;
     margin: auto;
+    max-height: 300px;
+    object-fit: contain;
     border-radius: 8px;
 }
 
